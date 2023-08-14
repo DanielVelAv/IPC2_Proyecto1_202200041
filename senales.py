@@ -5,6 +5,4 @@ class senal():
         self.A = A
    
     def agregarDato(self, t,A):
-
-
-    
+        print()
