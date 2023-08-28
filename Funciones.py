@@ -1,4 +1,4 @@
-from Lectura import *
+
 
 def carga_inicial():
     print("\nOpcion Cargar archivo: ")

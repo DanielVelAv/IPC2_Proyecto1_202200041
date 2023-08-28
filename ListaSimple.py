@@ -12,6 +12,9 @@ class ListaSimple():
 
     def getInicio(self):
         return self.nodoInicio
+
+    def getSize(self):
+        return self.size
     
     def estaVacia(self):
         return self.nodoInicio == None
@@ -42,10 +45,10 @@ class ListaSimple():
                 tmp.setDato(1)
             tmp = tmp.getSiguiente()
 
-    def buscarDato(self, dato):
+    def buscarID(self, dato):
         tmp = self.nodoInicio
         while tmp:
-            if tmp.getDato().getNombre() == dato:
+            if tmp.getId() == dato:
                 return tmp.getDato()
             tmp = tmp.getSiguiente()
         return None

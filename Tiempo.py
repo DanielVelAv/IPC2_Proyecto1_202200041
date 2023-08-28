@@ -9,12 +9,9 @@ class Tiempo:
         self.amplitud = amplitud
         self.listaAmplitudes = ListaSimple()
         '''self.llenarListadoAmplitudes()'''
-        self.imprimir()
+        '''self.imprimir()'''
         #get nombre
         #self-amplitudes = Amplitudes() para tenerla definida, y evitar errores
-
-    def getTiempo(self):
-        return self.tiempo
 
     def getNombre(self):
         return self.nombre
@@ -28,8 +25,9 @@ class Tiempo:
             self.listaAmplitudes.agregar(tmpAmplitud)
 
     def imprimir(self):
-        print("------tiempos: ---------")
+        print("------Tiempo/amplitud: ---------")
         objeto = self.amplitud.getInicio()
         while objeto != None:
-            print(objeto,self.nombre)
+            timp = objeto.getDato().getNAmplitud()
+            print("Amplitud",timp,"id",self.nombre)
             objeto = objeto.getSiguiente()

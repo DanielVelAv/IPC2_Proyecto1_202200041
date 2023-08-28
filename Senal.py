@@ -8,7 +8,7 @@ class Senal:
        self.tiempoMax = tiempoMax
        self.amplitudMax = amplitudMax
        self.tiempos = tiempos
-       self.imprimir()
+       '''self.imprimir()'''
 
     def getId(self):
         return self.nombre
@@ -29,8 +29,11 @@ class Senal:
         print("--------lista de Senales-----------")
         tmpl = self.tiempos.getInicio()
         while tmpl != None:
-            print(self.nombre)
+            print("Nombre de la señal",self.nombre)
             tmpl = tmpl.getSiguiente()
 
-        for i in range(3):
-            print(self.nombre)
+
+class SenalBinaria:
+    def __init__(self, nombre, listaEtiquetas):
+        pass
+

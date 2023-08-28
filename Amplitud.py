@@ -13,4 +13,4 @@ class Amplitud:
     
     def print(self):
         print("---------Lista de datos---------")
-        print(self.Namplitud,self.dato)
+        print("Tiempo: ",self.Namplitud,"Dato Guardado: ",self.dato)

@@ -1,0 +1,9 @@
+digraph structs {
+	node [fontname=Helvetica shape=record]
+	0 [label=<Senal.Senal object at 0x00000244524E9A60>]
+	1 [label=<Senal.Senal object at 0x00000244524F2040>]
+	0 -> 1
+	1 [label=<Senal.Senal object at 0x00000244524F2040>]
+	2 [label=<Senal.Senal object at 0x00000244524F22B0>]
+	1 -> 2
+}
