@@ -3,14 +3,15 @@ from Tiempo import Tiempo
 
 class Senal:
 
-    def __init__(self,nombre, tiempoMax, amplitudMax):
+    def __init__(self, nombre, tiempoMax, amplitudMax,tiempos):
        self.nombre = nombre
        self.tiempoMax = tiempoMax
        self.amplitudMax = amplitudMax
-       #en senal se tiene una lista de tiempos
-       self.tiempos = ListaSimple()
-       self.crearListaTiempos()
+       self.tiempos = tiempos
        self.imprimir()
+
+    def getId(self):
+        return self.nombre
 
     def getNombre(self):
         return self.nombre
@@ -20,17 +21,16 @@ class Senal:
     
     def getAmplitudMax(self):
         return self.amplitudMax
-    
-    #
-    def crearListaTiempos(self):
-        for i in range(0,int(self.tiempoMax)+1):
-            objeto = Tiempo(i,self.amplitudMax)
-            self.tiempos.agregarFinal(objeto)
+
+    def getTiempos(self):
+        return self.tiempos
 
     def imprimir(self):
-        print("--------Tiempos para senal----------",self.getNombre())
-        tmpTiempo = self.tiempos.getInicio()
-        while tmpTiempo != None:
-            print(tmpTiempo.getDato().getTiempo())
-            #se avanza hacia el siguiente dato
-            tmpTiempo = tmpTiempo.getSiguiente()
+        print("--------lista de Senales-----------")
+        tmpl = self.tiempos.getInicio()
+        while tmpl != None:
+            print(self.nombre)
+            tmpl = tmpl.getSiguiente()
+
+        for i in range(3):
+            print(self.nombre)

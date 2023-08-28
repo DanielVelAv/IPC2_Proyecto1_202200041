@@ -19,5 +19,5 @@ class Nodo():
     def setDato(self, dato):
         self.dato = dato
 
-    def setId(self, siguiente):
+    def setSiguiente(self, siguiente):
         self.siguiente = siguiente

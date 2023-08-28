@@ -3,27 +3,33 @@ from Amplitud import Amplitud
 
 class Tiempo:
 
-    def __init__(self, tiempo, amplitud):
-        self.tiempo = tiempo
+    def __init__(self, nombre, amplitud):
+        '''self.tiempo = tiempo'''
+        self.nombre = nombre
         self.amplitud = amplitud
         self.listaAmplitudes = ListaSimple()
-        self.llenarListadoAmplitudes()
+        '''self.llenarListadoAmplitudes()'''
         self.imprimir()
+        #get nombre
+        #self-amplitudes = Amplitudes() para tenerla definida, y evitar errores
 
     def getTiempo(self):
         return self.tiempo
+
+    def getNombre(self):
+        return self.nombre
     
-    def getAmplitud(self):
+    def getListaAmplitud(self):
         return self.amplitud
     
     def llenarListadoAmplitudes(self):
         for i in range(1, int(self.amplitud)+1):
             tmpAmplitud = Amplitud(i)
-            self.listaAmplitudes.agregarFinal(tmpAmplitud)
+            self.listaAmplitudes.agregar(tmpAmplitud)
 
     def imprimir(self):
-        print("-------Amplitudes para el tiempo-------", self.getTiempo())
-        objeto = self.listaAmplitudes.getInicio()
+        print("------tiempos: ---------")
+        objeto = self.amplitud.getInicio()
         while objeto != None:
-            print(objeto.getDato().getAmplitud())
+            print(objeto,self.nombre)
             objeto = objeto.getSiguiente()
