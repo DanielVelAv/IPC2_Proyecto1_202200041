@@ -1,8 +1,11 @@
 import xml.etree.ElementTree as ET
+
+import Grafica
 from ListaSimple import ListaSimple
 from Amplitud import *
 from Tiempo import *
 from Senal import *
+from Grafica import *
 
 class LecturaXML():
     def __init__(self, path):
@@ -38,15 +41,15 @@ class LecturaXML():
 
         for i in range(Senales.getSize()):
             actualSenal = Senales.buscarID(i)
-            print("Senal: ",actualSenal.getNombre())
+            print("-------Senal: ",actualSenal.getNombre(),"-------")
             tiempos = actualSenal.getTiempos()
             for j in range(tiempos.getSize()):
                 actualTiempo = tiempos.buscarID(j)
-                print("Tiempo: ",actualTiempo.getNombre())
+                print("Tiempo:   ",actualTiempo.getNombre())
                 amplitudes = actualTiempo.getListaAmplitud()
                 for k in range(amplitudes.getSize()):
                     actualAmplitud = amplitudes.buscarID(k)
-                    print("Amplitud: ",actualAmplitud.getNAmplitud()," Dato", actualAmplitud.getDato())
+                    print("Amplitud: ",actualAmplitud.getNAmplitud(),"Dato", actualAmplitud.getDato())
 
 
 
@@ -66,17 +69,21 @@ class LecturaXML():
                 amplitudes = actualTiempo.getListaAmplitud()
                 for k in range(amplitudes.getSize()):
                     actualAmplitud = amplitudes.buscarID(k)
-                    if actualAmplitud.getDato() > 0:
+                    if int(actualAmplitud.getDato()) > 0:
                         strEtiqueta += "1"
                     else:
                         strEtiqueta += "0"
                 # aqui se podria crear una clase donde los parametros sean tiempo y strEtiqueta, se instancia y esa se agregaria a la lista etiquetas
-
-                ListaEtiquetasBin.agregar(strEtiqueta)
+                SenalStr = Etiqueta(actualTiempo.getNombre(), strEtiqueta)
+                #print(actualTiempo.getNombre(),strEtiqueta) #funciona correctamente !no tocar
+                ListaEtiquetasBin.agregar(SenalStr)
             #aqui se crea una clase senal binaria que guarde el nombre de la senal actual y setee la lista etiquetas
-            SenalBinaria = SenalBinaria(actualSenal.getNombre(),ListaEtiquetasBin)
-            SenalesBinarios.agregar(SenalBinaria)
+            SenalBin = SenalBinaria(actualSenal.getNombre(),ListaEtiquetasBin)
+            #print(actualSenal.getNombre(),ListaEtiquetasBin)
+            SenalesBinarios.agregar(SenalBin)
             # luego se agrega esa senal binaria a la lista creada al principio (SenalesBinarios)
+        return SenalesBinarios
+
 
 
 
@@ -84,3 +91,6 @@ class LecturaXML():
 archiv = LecturaXML('c:/Users/Dolyad/Desktop/ArchivosP IPC2/entrada.xml')
 archiv.getSenal()
 archiv.imprimir()
+archiv.list_bin()
+SenalBinaria
+

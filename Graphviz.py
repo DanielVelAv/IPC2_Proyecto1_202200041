@@ -6,11 +6,10 @@ class Graph():
         self.dot = graphviz.Digraph('structs', filename=f'{self.nombreArchivo}.gv',
                                     node_attr={'shape': 'record', 'fontname': 'Helvetica'})
 
-    def add(self, nodoInicio, nodoSiguiente):
-        if (nodoSiguiente != None):
-            self.dot.node(str(nodoInicio.getId()), str(nodoInicio.getDato()))
-            self.dot.node(str(nodoSiguiente.getId()), str(nodoSiguiente.getDato()))
-            self.dot.edge(str(nodoInicio.getId()), str(nodoSiguiente.getId()))
+    def add(self, nodoInicio,nodoSiguiente):
+            self.dot.node(str(nodoInicio),str(nodoSiguiente))
+            self.dot.node(str(nodoSiguiente),str(nodoSiguiente))
+            self.dot.edge(str(nodoInicio),str(nodoSiguiente))
 
     def generar(self):
         self.dot.render(outfile=f'img/{self.nombreArchivo}.png').replace('\\', '/')
