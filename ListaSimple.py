@@ -1,5 +1,4 @@
 from Nodo import Nodo
-from Graphviz import Graph
 import graphviz
 import Grafica
 
@@ -47,13 +46,6 @@ class ListaSimple():
         graph.add()
         graph.generar()
 
-
-    def convertirBin(self):
-        tmp = self.nodoInicio
-        while tmp != None:
-            if(int(tmp.getDato())>=1):
-                tmp.setDato(1)
-            tmp = tmp.getSiguiente()
 
     def buscarID(self, dato):
         tmp = self.nodoInicio

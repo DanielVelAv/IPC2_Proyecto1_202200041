@@ -1,3 +1,4 @@
+
 import xml.etree.ElementTree as ET
 
 import Grafica
@@ -6,11 +7,13 @@ from Amplitud import *
 from Tiempo import *
 from Senal import *
 from Grafica import *
+import copy
 
 class LecturaXML():
     def __init__(self, path):
         self.raiz = ET.parse(path).getroot()
         self.ListasS = ListaSimple()
+        self.ListasB = ListaSimple()
 
     def getSenal(self):
 
@@ -37,6 +40,7 @@ class LecturaXML():
         return Senales
 
     def imprimir(self):
+
         Senales = self.ListasS
 
         for i in range(Senales.getSize()):
@@ -73,18 +77,82 @@ class LecturaXML():
                         strEtiqueta += "1"
                     else:
                         strEtiqueta += "0"
-                # aqui se podria crear una clase donde los parametros sean tiempo y strEtiqueta, se instancia y esa se agregaria a la lista etiquetas
                 SenalStr = Etiqueta(actualTiempo.getNombre(), strEtiqueta)
-                #print(actualTiempo.getNombre(),strEtiqueta) #funciona correctamente !no tocar
+                print("La lista convertida a binaria es: ",strEtiqueta)
                 ListaEtiquetasBin.agregar(SenalStr)
-            #aqui se crea una clase senal binaria que guarde el nombre de la senal actual y setee la lista etiquetas
             SenalBin = SenalBinaria(actualSenal.getNombre(),ListaEtiquetasBin)
-            #print(actualSenal.getNombre(),ListaEtiquetasBin)
             SenalesBinarios.agregar(SenalBin)
-            # luego se agrega esa senal binaria a la lista creada al principio (SenalesBinarios)
-        return SenalesBinarios
+            SenalBin.compararT(ListaEtiquetasBin)
+            compar = SenalBin.getListas()
+            self.ListasB.agregar(SenalBin.getListas())
+
+            #Apartado para suma de los datos y almacenamiento
+
+            for i in range(compar.getSize()):
+                actual = compar.buscarID(i)
+                print("-----Str igual: ",actual.getEtiquetaA(),"En tiempo A: ",actual.getTiempoA(),"y B: ",actual.getTiempoB()," en el senal ",actual.getNombreSenal())
+            comp = compar.buscarID(i)
+            times = actualSenal.getTiempos()  # busco los tiempos que tengo guardados en la lista original
+            for j in range(times.getSize()):  # un ciclo por cada uno de los tiempos para compararlos
+                tt = tiempos.buscarID(j)  # el dato del tiempo como tal}
+                '''print("...",comp.getTiempoA(),comp.getTiempoB(),tt.getNombre())'''
+                if tt.getNombre() == comp.getTiempoA():  # si el tiempo de la lista original es igual al primer tiempo donde hay coincidencias
+                    print("Se encontro el primer tiempo requerido: ", tt.getNombre())
+                    tiempo1 = tt.getNombre()
+                    listaA1 = tt.getListaAmplitud()
+                    tiempo2 = ""
+                    listaA2 = None
+                if tt.getNombre() == comp.getTiempoB():
+                    print("Se encontro el segundo tiempo requerido: ", tt.getNombre())
+                    tiempo2 = tt.getNombre()
+                    listaA2 = tt.getListaAmplitud()
+                print("Tiempo uno: ", tiempo1, " Tiempo dos: ", tiempo2)
+            print("tiempitos: ", tiempo1, tiempo2, listaA1, listaA2)
+        suma = Reducida(tiempo1, tiempo2, listaA1, listaA2, listaA2)
+        '''if comp.getSiguiente() is not None:
+            comp = comp.getSiguiente()
+        else:
+            print("Finalizamos")'''
 
 
+
+    def Grupos(self):
+
+
+        Senales = self.ListasS
+        datosModificados = copy.deepcopy(self.ListasS)
+        Binarios = self.ListasB
+
+        tmp = Binarios.getInicio().getDato().getInicio()
+
+        '''if tmp is not None:
+            print("tamaño: ", tmp.getDato().getSize())
+            print(Binarios.getInicio().getDato().getInicio().getDato().getTiempoA()," ._. ",tmp.getDato().getInicio().getTiempoB())
+            tmp = Binarios.getInicio().getSiguiente()'''
+
+        for i in range(Senales.getSize()):
+            actualSenal = Senales.buscarID(i)
+            print("-------Senal: ",actualSenal.getNombre(),"-------")
+            tiempos = actualSenal.getTiempos()
+            if tmp is not None:
+                for j in range(tiempos.getSize()):
+                    tt = tiempos.buscarID(j)
+                    print(tmp.getDato().getTiempoA(),"",tmp.getDato().getTiempoB())
+                    if tt.getNombre() is not None and tmp.getDato().getTiempoA() is not None:
+                        if tt.getNombre() == tmp.getDato().getTiempoA():
+                            '''print("Se encontro el primer tiempo requerido: ",tt.getNombre())'''
+                            tiempo1 = tt.getNombre()
+                            listaA1 = tt.getListaAmplitud()
+                            tiempo2 = ""
+                            listaA2 = None
+                        if tt.getNombre() == tmp.getDato().getTiempoB():
+                            '''print("Se encontro el segundo tiempo requerido: ",tt.getNombre())'''
+                            tiempo2 = tt.getNombre()
+                            listaA2 = tt.getListaAmplitud()
+                        '''print("Tiempo uno: ",tiempo1," Tiempo dos: ",tiempo2)'''
+                    '''print("tiempitos: ",tiempo1,tiempo2,listaA1,listaA2)'''
+                suma = Reducida(tiempo1,tiempo2,listaA1,listaA2,datosModificados)
+                tmp = tmp.getSiguiente()
 
 
 
@@ -93,4 +161,6 @@ archiv.getSenal()
 archiv.imprimir()
 archiv.list_bin()
 SenalBinaria
+'''archiv.Grupos()'''
+
 

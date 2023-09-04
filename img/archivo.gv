@@ -1,0 +1,19 @@
+digraph {
+	{
+		rank=same
+		Prueba1
+		Prueba1
+		Prueba1
+		Prueba1
+		Prueba1
+		Prueba1
+	}
+	C
+	{
+		rank=same
+		B
+		D
+		Y
+	}
+	C -> B
+}
