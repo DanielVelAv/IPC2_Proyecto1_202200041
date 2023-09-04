@@ -1,5 +1,6 @@
 from Nodo import Nodo
-from Graphviz import Graph
+import graphviz
+import Grafica
 
 class ListaSimple():
     id = 0
@@ -12,6 +13,9 @@ class ListaSimple():
 
     def getInicio(self):
         return self.nodoInicio
+
+    def getSize(self):
+        return self.size
     
     def estaVacia(self):
         return self.nodoInicio == None
@@ -28,30 +32,26 @@ class ListaSimple():
         self.size += 1
 
     def graficar(self, nombreArchivo):
-        graph = Graph(nombreArchivo)
-        tmp = self.nodoInicio
-        while tmp != None:
-            graph.add(tmp, tmp.getSiguiente())
-            tmp = tmp.getSiguiente()
+
+        graph = Grafica.Graphics(nombreArchivo)
+
+        for i in range(self.getSize()):
+            tmp = self.buscarID(i)
+            tiempos = tmp.getTiempos()
+            for j in range(tiempos.getSize()):
+                actualT = tiempos.buscarID(j)
+                amplitudes = actualT.getListaAmplitud()
+                for k in range(amplitudes.getSize()):
+                    actualA = amplitudes.buscarID(k)
+        graph.add()
         graph.generar()
 
-    def convertirBin(self):
-        tmp = self.nodoInicio
-        while tmp != None:
-            if(int(tmp.getDato())>=1):
-                tmp.setDato(1)
-            tmp = tmp.getSiguiente()
 
-    def buscarDato(self, dato):
+    def buscarID(self, dato):
         tmp = self.nodoInicio
         while tmp:
-            if tmp.getDato().getNombre() == dato:
+            if tmp.getId() == dato:
                 return tmp.getDato()
             tmp = tmp.getSiguiente()
         return None
 
-    def Imprimir(self):
-        tmp = self.nodoInicio
-        while tmp != None:
-            print(tmp.getDato())
-            tmp = tmp.getSiguiente()
