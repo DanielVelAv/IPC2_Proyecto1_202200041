@@ -65,22 +65,6 @@ class SenalBinaria:
         list = listaEtiquetas
         li = listaEtiquetas.getInicio()
 
-        '''while list:
-            list2 = list.getSiguiente()
-            print("lista: ", list.getDato().getEtiqueta())
-            while list2:
-                if list.getDato().getEtiqueta() == list2.getDato().getEtiqueta():
-                    print("Elementos iguales: ", list.getDato().getEtiqueta()," ",list2.getDato().getEtiqueta())
-                    Grupo = CoincidenciasBin(list.getDato().getEtiqueta(), list2.getDato().getEtiqueta(), self.nombre,list.getDato().getTiempo(), list2.getDato().getTiempo(), ll.getSize())
-                    self.listGrupos.agregar(Grupo)
-                list2 = list2.getSiguiente()
-            list = list.getSiguiente()
-            return Grupo'''
-
-        '''for i in range(listaEtiquetas.getSize()):
-            eti = list.buscarID(i)
-            print(eti.getEtiqueta())'''
-
 
         for i in range(listaEtiquetas.getSize()):
             for j in range(i+1,listaEtiquetas.getSize()):
@@ -91,7 +75,7 @@ class SenalBinaria:
                 if etiquetaA.getEtiqueta() is not None and etiquetaB.getEtiqueta() is not None:
                     if etiquetaA.getEtiqueta() == etiquetaB.getEtiqueta():
                         #print("nombre Senal: ",self.nombre,"tiempo de la lista: ",etiquetaAc.getTiempo(),"String generado: "+etiquetaAc.getEtiqueta())
-                        print("El patron: ",etiquetaA.getEtiqueta()," Del senal: ",self.nombre," En el tiempo: ",etiquetaA.getTiempo()," y ",etiquetaB.getTiempo(),"Son iguales")
+                        '''print("El patron: ",etiquetaA.getEtiqueta()," Del senal: ",self.nombre," En el tiempo: ",etiquetaA.getTiempo()," y ",etiquetaB.getTiempo(),"Son iguales")'''
                         Grupo = CoincidenciasBin(etiquetaA.getEtiqueta(),etiquetaB.getEtiqueta(),self.nombre,etiquetaA.getTiempo(),etiquetaB.getTiempo(),list.getSize())
                         self.listGrupos.agregar(Grupo)
 
@@ -115,3 +99,12 @@ class Etiqueta:
         print("--------------------------------")
         print("Tiempo: ", self.tiempo,"String patron: ", self.etiqueta)
         print("--------------------------------")
+
+
+class SenalG:
+    def __init__(self, nombre, tiempoMax, amplitudMax,tiempos,grupo):
+       self.grupo = grupo
+       self.nombre = nombre
+       self.tiempoMax = tiempoMax
+       self.amplitudMax = amplitudMax
+       self.tiempos = tiempos

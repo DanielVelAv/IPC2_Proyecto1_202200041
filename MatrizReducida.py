@@ -1,33 +1,42 @@
-
+from ListaSimple import ListaSimple
 
 
 class Reducida:
-    def __init__(self,tiempo1,tiempo2,listaA1,listaA2,datosModificados):
-        self.tiempo1 = tiempo1
-        self.tiempo2 = tiempo2
-        self.listaA1 = listaA1
-        self.listaA2 = listaA2
-        self.datosModificados = datosModificados
-        self.SumarTiempos()
+    def __init__(self):
+        self.listaSumas = ListaSimple()
+        self.ll = ListaSimple()
 
 
-    def SumarTiempos(self):
+    def SumarTiempos(self,tiempo1,tiempo2,listaA1,listaA2):
+        tiempo1 = tiempo1
+        tiempo2 = tiempo2
+        listaA1 = listaA1
+        listaA2 = listaA2
 
-        nuevoNombre = str(self.tiempo1)+","+str(self.tiempo2)
+        nuevoNombre = str(tiempo1)+","+str(tiempo2)
 
-        print(self.listaA1)
-        for i in range(self.listaA1.getSize()):
-            Amplitud = self.listaA1.buscarID(i)
-            AmplitudB = self.listaA2.buscarID(i)
+        llist = ListaSimple()
+
+        for i in range(listaA1.getSize()):
+
+            Amplitud = listaA1.buscarID(i)
+            AmplitudB = listaA2.buscarID(i)
             Amplitud.getDato()
             suma = int(Amplitud.getDato())+int(AmplitudB.getDato())
-            print(Amplitud.getDato(),AmplitudB.getDato())
-            print(nuevoNombre," -> ",suma)
+            sumatoria = Sumados(suma)
+            llist.agregar(sumatoria)
+            '''print(Amplitud.getDato(),AmplitudB.getDato())
+            print(nuevoNombre," -> ",suma)'''
+            '''print("verificacion de guardado: ",llist.getInicio().getDato().getNuevoNombre())'''
 
+        dato = MatR(nuevoNombre, llist)
+        self.listaSumas.agregar(dato)
 
+    def getLL(self):
+        return self.ll
 
-    def getMatReducida(self):
-        pass
+    def getListasSumas(self):
+        return self.listaSumas
 
 class CoincidenciasBin:
     def __init__(self,etiquetaA,etiquetaB,nombreSenal,TiempoA,TiempoB,size):
@@ -55,3 +64,26 @@ class CoincidenciasBin:
 
     def getTiempoB(self):
         return self.tiempoB
+
+
+
+class Sumados:
+    def __init__(self,suma):
+        self.suma = suma
+
+    def getSumados(self):
+        return self.suma
+
+
+class MatR:
+
+    def __init__(self, nuevoNombre, llist):
+        self.nuevoNombre = nuevoNombre
+        self.llist = llist
+
+    def getnnNombre(self):
+        return self.nuevoNombre
+
+    def getLlist(self):
+        return self.llist
+
