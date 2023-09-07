@@ -31,21 +31,6 @@ class ListaSimple():
             self.nodoFinal = nuevo
         self.size += 1
 
-    def graficar(self, nombreArchivo):
-
-        graph = Grafica.Graphics(nombreArchivo)
-
-        for i in range(self.getSize()):
-            tmp = self.buscarID(i)
-            tiempos = tmp.getTiempos()
-            for j in range(tiempos.getSize()):
-                actualT = tiempos.buscarID(j)
-                amplitudes = actualT.getListaAmplitud()
-                for k in range(amplitudes.getSize()):
-                    actualA = amplitudes.buscarID(k)
-        graph.add()
-        graph.generar()
-
 
     def buscarID(self, dato):
         tmp = self.nodoInicio
@@ -54,4 +39,15 @@ class ListaSimple():
                 return tmp.getDato()
             tmp = tmp.getSiguiente()
         return None
+
+    def eliminarD(self,dato):
+        tmp = self.nodoInicio
+        anterior = None
+        while tmp:
+            if tmp.getDato() == dato:
+                if anterior is None:
+                    self.primero = tmp.getSiguiente()
+                    tmp.getSiguiente = None
+                else:
+                    anterior.getSiguiente
 

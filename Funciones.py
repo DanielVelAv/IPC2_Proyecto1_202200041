@@ -1,11 +1,9 @@
-
+ubicacion = ""
 
 def carga_inicial():
     print("\nOpcion Cargar archivo: ")
     ubicacion = input("Ingrese la ruta del archivo:")
     print(ubicacion)
-    lectura = Lectura(ubicacion)
-    lectura.getSenal()
 
 
 def procesador_archivos():
