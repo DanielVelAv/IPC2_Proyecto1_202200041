@@ -47,6 +47,7 @@ def menu_Principal():
         quit()
     else:
         print("porfavor seleccione una opcion valida")
+        menu_Principal()
         
 
     

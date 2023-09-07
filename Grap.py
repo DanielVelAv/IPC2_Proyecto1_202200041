@@ -45,11 +45,11 @@ class Graf:
                 dot.render('grafica' + actualSenal.getNombre())
 
     def ejecutar_grafReducido(self, listaNL):
-
-        dot = graphviz.Digraph('matriz reducida', format='png')
+        pass
+        '''dot = graphviz.Digraph('matriz reducida', format='png')
 
         dot.node('Title', )
-        dot.node('Amplitud', actualSenal.getAmplitudMax())
+        dot.node('Amplitud', actualSenal.getAmplitudMax())'''
 
 
 
