@@ -94,10 +94,10 @@ class LecturaXML():
 
             #Apartado para suma de los datos y almacenamiento
 
-            for l in range(compar.getSize()):
+            '''for l in range(compar.getSize()):
                 actual = compar.buscarID(l)
-                '''print("-----Str igual: ",actual.getEtiquetaA(),"En tiempo A: ",actual.getTiempoA(),"y B: ",actual.getTiempoB()," en el senal ",actual.getNombreSenal())'''
-            com = compar.buscarID(l)
+                print("-----Str igual: ",actual.getEtiquetaA(),"En tiempo A: ",actual.getTiempoA(),"y B: ",actual.getTiempoB()," en el senal ",actual.getNombreSenal())
+            com = compar.buscarID(l)'''
             tiempo1 = ""
             tiempo2 = ""
             primero = False
